@@ -8,6 +8,7 @@ public class Paciente {
     private static final int DEF_INFRAPESO =-1;
     private static final int DEF_IDEAL = 0;
     private static final int DEF_SOBREPESO =+1;
+    private static final int DEF_EDAD = 18;
     private String nombre;
     private String DNI;
     private int edad;
@@ -19,7 +20,7 @@ public class Paciente {
         this.nombre = nombre;
         this.edad = edad;
         DNI = generateDNI();
-        this.genero = genero;
+        this.genero = validarGenero(genero);
         this.peso = peso;
         this.altura = altura;
     }
@@ -27,7 +28,8 @@ public class Paciente {
         this(null,0,DEF_GENERO,0,0);
     }
     public int calcularIMC(){
-        double IMC = peso / Math.pow(altura,2);
+        double IMC = peso / Math.pow((double) altura/100,2);
+        System.out.println(IMC);
         if (IMC < 20){
             return DEF_INFRAPESO;
         } else if (IMC > 25) {
@@ -56,6 +58,21 @@ public class Paciente {
         dni += letras[dividir];
 
         return dni;
+    }
+    public char validarGenero (char genero){
+        if (genero == 'H' || genero == 'M'){
+            return genero;
+        }else {
+            return DEF_GENERO;
+        }
+    }
+
+    public boolean esMayorde18(){
+        if (edad >= DEF_EDAD){
+            return true;
+        }else{
+            return false;
+        }
     }
     public String getNombre() {
         return nombre;
@@ -105,5 +122,16 @@ public class Paciente {
         this.altura = altura;
     }
 
-
+    public void mostrar(){
+        System.out.println(nombre);
+        System.out.println(edad);
+        System.out.println(DNI);
+        System.out.println(genero);
+        System.out.println(peso);
+        System.out.println(altura);
+    }
+    @Override
+    public String toString(){
+        return "Paciente [nombre = " + nombre + "edad = " + edad + "dni = " + DNI + "]";
+    }
 }

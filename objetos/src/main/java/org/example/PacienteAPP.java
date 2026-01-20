@@ -1,14 +1,22 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class PacienteAPP {
     static void main(String[] args) {
-        Paciente jacobo = new Paciente("jacobo",20,'M',110,179);
-        System.out.println(jacobo.getNombre());
-        System.out.println(jacobo.getDNI());
-        System.out.println(jacobo.getEdad());
-        System.out.println(jacobo.getGenero());
-        System.out.println(jacobo.getPeso());
-        System.out.println(jacobo.getAltura());
-        System.out.println(jacobo.calcularIMC());
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Introduce tu nombre");
+        String nombre = teclado.nextLine();
+        System.out.println("Introduce tu edad");
+        int edad = teclado.nextInt();
+        System.out.println("Introduce tu genero");
+        char genero = teclado.next().charAt(0);
+        System.out.println("Introduce tu peso");
+        double peso = teclado.nextInt();
+        System.out.println("Introduce tu altura");
+        int altura = teclado.nextInt();
+        Paciente jacobo = new Paciente(nombre,edad,genero,peso,altura);
+        jacobo.mostrar();
+
     }
 }

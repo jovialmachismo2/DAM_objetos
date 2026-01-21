@@ -7,6 +7,6 @@ public class EstudianteAPP {
         Estudiante raul = new Estudiante("Raul");
 
         System.out.println(raul.getNia());
-        System.out.println(raul);
+        System.out.println(jorge);
     }
 }

@@ -2,6 +2,7 @@ package org.example;
 
 public class Estudiante {
 
+    private static final String CORREO_FORMAT = "^[A-Za-z0-9+_.-]+@alu.edu.gva.es$";
     private static int contadorestudiantes = 0;
     private String curso;
     private int nia;
@@ -12,10 +13,17 @@ public class Estudiante {
         this.nombre = nombre;
         this.curso = curso;
         this.gmail = gmail;
-        nia = contadorestudiantes + 1;
+        nia = ++contadorestudiantes;
     }
     public  Estudiante (String nombre){
-        
+        this(nombre, "","" );
+    }
+    public boolean validarCorreo(String gmail){
+        if (gmail.matches(CORREO_FORMAT)){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public String getNombre() {

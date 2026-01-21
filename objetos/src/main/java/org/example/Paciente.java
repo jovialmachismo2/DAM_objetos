@@ -20,7 +20,7 @@ public class Paciente {
         this.nombre = nombre;
         this.edad = edad;
         DNI = generateDNI();
-        this.genero = validarGenero(genero);
+        setGenero(genero);
         this.peso = peso;
         this.altura = altura;
     }
@@ -86,10 +86,6 @@ public class Paciente {
         return DNI;
     }
 
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
-    }
-
     public int getEdad() {
         return edad;
     }
@@ -103,7 +99,7 @@ public class Paciente {
     }
 
     public void setGenero(char genero) {
-        this.genero = genero;
+        this.genero = validarGenero(genero);
     }
 
     public double getPeso() {
